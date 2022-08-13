@@ -22,7 +22,7 @@ public class ScheduleConfig {
     private DashboardService dashboardService;
 
     //Dashboard process
-    @Scheduled(cron = "0 0,15,30,45 * * * *")
+    @Scheduled(cron = "0 * * * * *")
 //    @Scheduled(cron = "0,30 * * * * *")
     public void scheduleTaskUsingCronExpression() throws ParseException {
         log.info("Running summary job at {}", new Date());

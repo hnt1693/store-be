@@ -111,7 +111,7 @@ public class GroupDao implements CommonDao<Group> {
             searchMap = DaoUtils.getSearchDataFromParam(pageable.getSearchData());
         }
 
-        sql.append("select count(*) from `groups` gr ");
+        sql.append("select count(*) from groups gr ");
         sql.append(" WHERE gr.id is not null ");
 
 
