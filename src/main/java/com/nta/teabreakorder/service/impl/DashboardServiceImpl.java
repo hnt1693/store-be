@@ -136,7 +136,8 @@ public class DashboardServiceImpl implements DashboardService {
 
             }
         }
-
+        List<Dashboard> dashboardList = dashboardDao.getAllSummaryCountByTableNameAndPeriodId(tableName, startTime, endTime);
+        Collections.sort(dashboardList, Comparator.comparing(Dashboard::getPeriodId));
         return CommonUtil.createResponseEntityOK(dashboardDao.getAllSummaryCountByTableNameAndPeriodId(tableName, startTime, endTime));
     }
 
