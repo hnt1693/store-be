@@ -1,0 +1,2600 @@
+2022-08-10 21:15:52 [main] INFO  c.n.t.StoreManagerApplication - Starting StoreManagerApplication using Java 11.0.1 on Zenphyrus with PID 25804 (D:\java\tr\backend\target\classes started by PC in D:\java\tr\backend)
+2022-08-10 21:15:52 [main] INFO  c.n.t.StoreManagerApplication - No active profile set, falling back to 1 default profile: "default"
+2022-08-10 21:15:53 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-08-10 21:15:53 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 90 ms. Found 11 JPA repository interfaces.
+2022-08-10 21:15:54 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2022-08-10 21:15:54 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2022-08-10 21:15:54 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.60]
+2022-08-10 21:15:54 [main] INFO  o.a.c.c.C.[.[localhost].[/api/v1] - Initializing Spring embedded WebApplicationContext
+2022-08-10 21:15:54 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1307 ms
+2022-08-10 21:15:54 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-08-10 21:15:54 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-10 21:15:54 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.7.Final
+2022-08-10 21:15:54 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-10 21:15:54 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2022-08-10 21:15:54 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2022-08-10 21:15:54 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2022-08-10 21:15:55 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-10 21:15:55 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-08-10 21:15:56 [main] INFO  o.s.s.w.DefaultSecurityFilterChain - Will not secure any request
+2022-08-10 21:15:56 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path '/api/v1'
+2022-08-10 21:15:56 [main] INFO  c.n.t.StoreManagerApplication - Started StoreManagerApplication in 4.264 seconds (JVM running for 5.152)
+2022-08-10 21:16:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        settings0_.id as id1_7_,
+        settings0_.code as code2_7_,
+        settings0_.name as name3_7_,
+        settings0_.value as value4_7_ 
+    from
+        settings settings0_ 
+    where
+        settings0_.code=?
+2022-08-10 21:16:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [last_time_summary_job]
+2022-08-10 21:16:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        distinct order0_.id as id1_5_0_,
+        orderdetai1_.id as id1_4_1_,
+        order0_.created_at as created_2_5_0_,
+        order0_.created_by as created_3_5_0_,
+        order0_.is_deleted as is_delet4_5_0_,
+        order0_.modified_at as modified5_5_0_,
+        order0_.modified_by as modified6_5_0_,
+        order0_.customer_id as custome10_5_0_,
+        order0_.is_paid as is_paid7_5_0_,
+        order0_.type as type8_5_0_,
+        order0_.total as total9_5_0_,
+        orderdetai1_.product_id as product_3_4_1_,
+        orderdetai1_.quantity as quantity2_4_1_,
+        orderdetai1_.order_id as order_id4_4_0__,
+        orderdetai1_.id as id1_4_0__ 
+    from
+        orders order0_ 
+    inner join
+        order_detail orderdetai1_ 
+            on order0_.id=orderdetai1_.order_id 
+    where
+        (
+            order0_.created_at between ? and ?
+        ) 
+        and order0_.type=?
+2022-08-10 21:16:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [TIMESTAMP] - [2022-08-10T21:00]
+2022-08-10 21:16:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [2] as [TIMESTAMP] - [2022-08-10T21:16]
+2022-08-10 21:16:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [3] as [VARCHAR] - [XUAT]
+2022-08-10 21:16:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        customer0_.id as id1_0_0_,
+        customer0_.address as address2_0_0_,
+        customer0_.name as name3_0_0_,
+        customer0_.phone as phone4_0_0_ 
+    from
+        customers customer0_ 
+    where
+        customer0_.id=?
+2022-08-10 21:16:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [2]
+2022-08-10 21:16:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:16:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [2]
+2022-08-10 21:16:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:16:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [3]
+2022-08-10 21:16:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:16:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [4]
+2022-08-10 21:16:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        hourly_summary 
+    WHERE
+        period_id >= 2022081021
+2022-08-10 21:16:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        hourly_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (1,3,12000,4500,2022081021)
+2022-08-10 21:16:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        daily_summary 
+    WHERE
+        period_id >= 20220810
+2022-08-10 21:16:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    SELECT
+        period_id,
+        buy_count,
+        customer_count,
+        total,
+        profit 
+    FROM
+        hourly_summary 
+    WHERE
+        period_id between 2022081000 AND 2022081024
+2022-08-10 21:16:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        daily_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (3,6,27000,8500,20220810)
+2022-08-10 21:16:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        monthly_summary 
+    WHERE
+        period_id >= 202208
+2022-08-10 21:16:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    SELECT
+        period_id,
+        buy_count,
+        customer_count,
+        total,
+        profit 
+    FROM
+        daily_summary 
+    WHERE
+        period_id between 20220801 AND 20220831
+2022-08-10 21:16:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        monthly_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (26,36,269000,50000,202208)
+2022-08-10 21:16:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    update
+        settings 
+    set
+        value=? 
+    where
+        code=?
+2022-08-10 21:16:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [2022-08-10 21:16:00]
+2022-08-10 21:16:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [2] as [VARCHAR] - [last_time_summary_job]
+2022-08-10 21:16:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        settings0_.id as id1_7_,
+        settings0_.code as code2_7_,
+        settings0_.name as name3_7_,
+        settings0_.value as value4_7_ 
+    from
+        settings settings0_ 
+    where
+        settings0_.code=?
+2022-08-10 21:16:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [last_time_summary_job]
+2022-08-10 21:16:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        distinct order0_.id as id1_5_0_,
+        orderdetai1_.id as id1_4_1_,
+        order0_.created_at as created_2_5_0_,
+        order0_.created_by as created_3_5_0_,
+        order0_.is_deleted as is_delet4_5_0_,
+        order0_.modified_at as modified5_5_0_,
+        order0_.modified_by as modified6_5_0_,
+        order0_.customer_id as custome10_5_0_,
+        order0_.is_paid as is_paid7_5_0_,
+        order0_.type as type8_5_0_,
+        order0_.total as total9_5_0_,
+        orderdetai1_.product_id as product_3_4_1_,
+        orderdetai1_.quantity as quantity2_4_1_,
+        orderdetai1_.order_id as order_id4_4_0__,
+        orderdetai1_.id as id1_4_0__ 
+    from
+        orders order0_ 
+    inner join
+        order_detail orderdetai1_ 
+            on order0_.id=orderdetai1_.order_id 
+    where
+        (
+            order0_.created_at between ? and ?
+        ) 
+        and order0_.type=?
+2022-08-10 21:16:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [TIMESTAMP] - [2022-08-10T21:00]
+2022-08-10 21:16:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [2] as [TIMESTAMP] - [2022-08-10T21:16:30]
+2022-08-10 21:16:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [3] as [VARCHAR] - [XUAT]
+2022-08-10 21:16:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        customer0_.id as id1_0_0_,
+        customer0_.address as address2_0_0_,
+        customer0_.name as name3_0_0_,
+        customer0_.phone as phone4_0_0_ 
+    from
+        customers customer0_ 
+    where
+        customer0_.id=?
+2022-08-10 21:16:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [2]
+2022-08-10 21:16:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:16:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [2]
+2022-08-10 21:16:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:16:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [3]
+2022-08-10 21:16:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:16:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [4]
+2022-08-10 21:16:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        hourly_summary 
+    WHERE
+        period_id >= 2022081021
+2022-08-10 21:16:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        hourly_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (1,3,12000,4500,2022081021)
+2022-08-10 21:16:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        daily_summary 
+    WHERE
+        period_id >= 20220810
+2022-08-10 21:16:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    SELECT
+        period_id,
+        buy_count,
+        customer_count,
+        total,
+        profit 
+    FROM
+        hourly_summary 
+    WHERE
+        period_id between 2022081000 AND 2022081024
+2022-08-10 21:16:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        daily_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (3,6,27000,8500,20220810)
+2022-08-10 21:16:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        monthly_summary 
+    WHERE
+        period_id >= 202208
+2022-08-10 21:16:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    SELECT
+        period_id,
+        buy_count,
+        customer_count,
+        total,
+        profit 
+    FROM
+        daily_summary 
+    WHERE
+        period_id between 20220801 AND 20220831
+2022-08-10 21:16:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        monthly_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (26,36,269000,50000,202208)
+2022-08-10 21:16:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    update
+        settings 
+    set
+        value=? 
+    where
+        code=?
+2022-08-10 21:16:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [2022-08-10 21:16:30]
+2022-08-10 21:16:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [2] as [VARCHAR] - [last_time_summary_job]
+2022-08-10 21:17:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        settings0_.id as id1_7_,
+        settings0_.code as code2_7_,
+        settings0_.name as name3_7_,
+        settings0_.value as value4_7_ 
+    from
+        settings settings0_ 
+    where
+        settings0_.code=?
+2022-08-10 21:17:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [last_time_summary_job]
+2022-08-10 21:17:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        distinct order0_.id as id1_5_0_,
+        orderdetai1_.id as id1_4_1_,
+        order0_.created_at as created_2_5_0_,
+        order0_.created_by as created_3_5_0_,
+        order0_.is_deleted as is_delet4_5_0_,
+        order0_.modified_at as modified5_5_0_,
+        order0_.modified_by as modified6_5_0_,
+        order0_.customer_id as custome10_5_0_,
+        order0_.is_paid as is_paid7_5_0_,
+        order0_.type as type8_5_0_,
+        order0_.total as total9_5_0_,
+        orderdetai1_.product_id as product_3_4_1_,
+        orderdetai1_.quantity as quantity2_4_1_,
+        orderdetai1_.order_id as order_id4_4_0__,
+        orderdetai1_.id as id1_4_0__ 
+    from
+        orders order0_ 
+    inner join
+        order_detail orderdetai1_ 
+            on order0_.id=orderdetai1_.order_id 
+    where
+        (
+            order0_.created_at between ? and ?
+        ) 
+        and order0_.type=?
+2022-08-10 21:17:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [TIMESTAMP] - [2022-08-10T21:00]
+2022-08-10 21:17:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [2] as [TIMESTAMP] - [2022-08-10T21:17]
+2022-08-10 21:17:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [3] as [VARCHAR] - [XUAT]
+2022-08-10 21:17:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        customer0_.id as id1_0_0_,
+        customer0_.address as address2_0_0_,
+        customer0_.name as name3_0_0_,
+        customer0_.phone as phone4_0_0_ 
+    from
+        customers customer0_ 
+    where
+        customer0_.id=?
+2022-08-10 21:17:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [2]
+2022-08-10 21:17:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:17:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [2]
+2022-08-10 21:17:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:17:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [3]
+2022-08-10 21:17:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:17:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [4]
+2022-08-10 21:17:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        hourly_summary 
+    WHERE
+        period_id >= 2022081021
+2022-08-10 21:17:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        hourly_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (1,3,12000,4500,2022081021)
+2022-08-10 21:17:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        daily_summary 
+    WHERE
+        period_id >= 20220810
+2022-08-10 21:17:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    SELECT
+        period_id,
+        buy_count,
+        customer_count,
+        total,
+        profit 
+    FROM
+        hourly_summary 
+    WHERE
+        period_id between 2022081000 AND 2022081024
+2022-08-10 21:17:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        daily_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (3,6,27000,8500,20220810)
+2022-08-10 21:17:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        monthly_summary 
+    WHERE
+        period_id >= 202208
+2022-08-10 21:17:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    SELECT
+        period_id,
+        buy_count,
+        customer_count,
+        total,
+        profit 
+    FROM
+        daily_summary 
+    WHERE
+        period_id between 20220801 AND 20220831
+2022-08-10 21:17:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        monthly_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (26,36,269000,50000,202208)
+2022-08-10 21:17:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    update
+        settings 
+    set
+        value=? 
+    where
+        code=?
+2022-08-10 21:17:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [2022-08-10 21:17:00]
+2022-08-10 21:17:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [2] as [VARCHAR] - [last_time_summary_job]
+2022-08-10 21:17:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        settings0_.id as id1_7_,
+        settings0_.code as code2_7_,
+        settings0_.name as name3_7_,
+        settings0_.value as value4_7_ 
+    from
+        settings settings0_ 
+    where
+        settings0_.code=?
+2022-08-10 21:17:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [last_time_summary_job]
+2022-08-10 21:17:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        distinct order0_.id as id1_5_0_,
+        orderdetai1_.id as id1_4_1_,
+        order0_.created_at as created_2_5_0_,
+        order0_.created_by as created_3_5_0_,
+        order0_.is_deleted as is_delet4_5_0_,
+        order0_.modified_at as modified5_5_0_,
+        order0_.modified_by as modified6_5_0_,
+        order0_.customer_id as custome10_5_0_,
+        order0_.is_paid as is_paid7_5_0_,
+        order0_.type as type8_5_0_,
+        order0_.total as total9_5_0_,
+        orderdetai1_.product_id as product_3_4_1_,
+        orderdetai1_.quantity as quantity2_4_1_,
+        orderdetai1_.order_id as order_id4_4_0__,
+        orderdetai1_.id as id1_4_0__ 
+    from
+        orders order0_ 
+    inner join
+        order_detail orderdetai1_ 
+            on order0_.id=orderdetai1_.order_id 
+    where
+        (
+            order0_.created_at between ? and ?
+        ) 
+        and order0_.type=?
+2022-08-10 21:17:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [TIMESTAMP] - [2022-08-10T21:00]
+2022-08-10 21:17:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [2] as [TIMESTAMP] - [2022-08-10T21:17:30]
+2022-08-10 21:17:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [3] as [VARCHAR] - [XUAT]
+2022-08-10 21:17:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        customer0_.id as id1_0_0_,
+        customer0_.address as address2_0_0_,
+        customer0_.name as name3_0_0_,
+        customer0_.phone as phone4_0_0_ 
+    from
+        customers customer0_ 
+    where
+        customer0_.id=?
+2022-08-10 21:17:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [2]
+2022-08-10 21:17:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:17:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [2]
+2022-08-10 21:17:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:17:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [3]
+2022-08-10 21:17:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:17:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [4]
+2022-08-10 21:17:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        hourly_summary 
+    WHERE
+        period_id >= 2022081021
+2022-08-10 21:17:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        hourly_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (1,3,12000,4500,2022081021)
+2022-08-10 21:17:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        daily_summary 
+    WHERE
+        period_id >= 20220810
+2022-08-10 21:17:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    SELECT
+        period_id,
+        buy_count,
+        customer_count,
+        total,
+        profit 
+    FROM
+        hourly_summary 
+    WHERE
+        period_id between 2022081000 AND 2022081024
+2022-08-10 21:17:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        daily_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (3,6,27000,8500,20220810)
+2022-08-10 21:17:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        monthly_summary 
+    WHERE
+        period_id >= 202208
+2022-08-10 21:17:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    SELECT
+        period_id,
+        buy_count,
+        customer_count,
+        total,
+        profit 
+    FROM
+        daily_summary 
+    WHERE
+        period_id between 20220801 AND 20220831
+2022-08-10 21:17:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        monthly_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (26,36,269000,50000,202208)
+2022-08-10 21:17:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    update
+        settings 
+    set
+        value=? 
+    where
+        code=?
+2022-08-10 21:17:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [2022-08-10 21:17:30]
+2022-08-10 21:17:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [2] as [VARCHAR] - [last_time_summary_job]
+2022-08-10 21:18:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        settings0_.id as id1_7_,
+        settings0_.code as code2_7_,
+        settings0_.name as name3_7_,
+        settings0_.value as value4_7_ 
+    from
+        settings settings0_ 
+    where
+        settings0_.code=?
+2022-08-10 21:18:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [last_time_summary_job]
+2022-08-10 21:18:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        distinct order0_.id as id1_5_0_,
+        orderdetai1_.id as id1_4_1_,
+        order0_.created_at as created_2_5_0_,
+        order0_.created_by as created_3_5_0_,
+        order0_.is_deleted as is_delet4_5_0_,
+        order0_.modified_at as modified5_5_0_,
+        order0_.modified_by as modified6_5_0_,
+        order0_.customer_id as custome10_5_0_,
+        order0_.is_paid as is_paid7_5_0_,
+        order0_.type as type8_5_0_,
+        order0_.total as total9_5_0_,
+        orderdetai1_.product_id as product_3_4_1_,
+        orderdetai1_.quantity as quantity2_4_1_,
+        orderdetai1_.order_id as order_id4_4_0__,
+        orderdetai1_.id as id1_4_0__ 
+    from
+        orders order0_ 
+    inner join
+        order_detail orderdetai1_ 
+            on order0_.id=orderdetai1_.order_id 
+    where
+        (
+            order0_.created_at between ? and ?
+        ) 
+        and order0_.type=?
+2022-08-10 21:18:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [TIMESTAMP] - [2022-08-10T21:00]
+2022-08-10 21:18:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [2] as [TIMESTAMP] - [2022-08-10T21:18]
+2022-08-10 21:18:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [3] as [VARCHAR] - [XUAT]
+2022-08-10 21:18:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        customer0_.id as id1_0_0_,
+        customer0_.address as address2_0_0_,
+        customer0_.name as name3_0_0_,
+        customer0_.phone as phone4_0_0_ 
+    from
+        customers customer0_ 
+    where
+        customer0_.id=?
+2022-08-10 21:18:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [2]
+2022-08-10 21:18:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:18:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [2]
+2022-08-10 21:18:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:18:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [3]
+2022-08-10 21:18:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:18:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [4]
+2022-08-10 21:18:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        hourly_summary 
+    WHERE
+        period_id >= 2022081021
+2022-08-10 21:18:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        hourly_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (1,3,12000,4500,2022081021)
+2022-08-10 21:18:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        daily_summary 
+    WHERE
+        period_id >= 20220810
+2022-08-10 21:18:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    SELECT
+        period_id,
+        buy_count,
+        customer_count,
+        total,
+        profit 
+    FROM
+        hourly_summary 
+    WHERE
+        period_id between 2022081000 AND 2022081024
+2022-08-10 21:18:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        daily_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (3,6,27000,8500,20220810)
+2022-08-10 21:18:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        monthly_summary 
+    WHERE
+        period_id >= 202208
+2022-08-10 21:18:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    SELECT
+        period_id,
+        buy_count,
+        customer_count,
+        total,
+        profit 
+    FROM
+        daily_summary 
+    WHERE
+        period_id between 20220801 AND 20220831
+2022-08-10 21:18:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        monthly_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (26,36,269000,50000,202208)
+2022-08-10 21:18:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    update
+        settings 
+    set
+        value=? 
+    where
+        code=?
+2022-08-10 21:18:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [2022-08-10 21:18:00]
+2022-08-10 21:18:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [2] as [VARCHAR] - [last_time_summary_job]
+2022-08-10 21:18:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        settings0_.id as id1_7_,
+        settings0_.code as code2_7_,
+        settings0_.name as name3_7_,
+        settings0_.value as value4_7_ 
+    from
+        settings settings0_ 
+    where
+        settings0_.code=?
+2022-08-10 21:18:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [last_time_summary_job]
+2022-08-10 21:18:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        distinct order0_.id as id1_5_0_,
+        orderdetai1_.id as id1_4_1_,
+        order0_.created_at as created_2_5_0_,
+        order0_.created_by as created_3_5_0_,
+        order0_.is_deleted as is_delet4_5_0_,
+        order0_.modified_at as modified5_5_0_,
+        order0_.modified_by as modified6_5_0_,
+        order0_.customer_id as custome10_5_0_,
+        order0_.is_paid as is_paid7_5_0_,
+        order0_.type as type8_5_0_,
+        order0_.total as total9_5_0_,
+        orderdetai1_.product_id as product_3_4_1_,
+        orderdetai1_.quantity as quantity2_4_1_,
+        orderdetai1_.order_id as order_id4_4_0__,
+        orderdetai1_.id as id1_4_0__ 
+    from
+        orders order0_ 
+    inner join
+        order_detail orderdetai1_ 
+            on order0_.id=orderdetai1_.order_id 
+    where
+        (
+            order0_.created_at between ? and ?
+        ) 
+        and order0_.type=?
+2022-08-10 21:18:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [TIMESTAMP] - [2022-08-10T21:00]
+2022-08-10 21:18:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [2] as [TIMESTAMP] - [2022-08-10T21:18:30]
+2022-08-10 21:18:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [3] as [VARCHAR] - [XUAT]
+2022-08-10 21:18:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        customer0_.id as id1_0_0_,
+        customer0_.address as address2_0_0_,
+        customer0_.name as name3_0_0_,
+        customer0_.phone as phone4_0_0_ 
+    from
+        customers customer0_ 
+    where
+        customer0_.id=?
+2022-08-10 21:18:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [2]
+2022-08-10 21:18:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:18:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [2]
+2022-08-10 21:18:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:18:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [3]
+2022-08-10 21:18:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:18:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [4]
+2022-08-10 21:18:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        hourly_summary 
+    WHERE
+        period_id >= 2022081021
+2022-08-10 21:18:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        hourly_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (1,3,12000,4500,2022081021)
+2022-08-10 21:18:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        daily_summary 
+    WHERE
+        period_id >= 20220810
+2022-08-10 21:18:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    SELECT
+        period_id,
+        buy_count,
+        customer_count,
+        total,
+        profit 
+    FROM
+        hourly_summary 
+    WHERE
+        period_id between 2022081000 AND 2022081024
+2022-08-10 21:18:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        daily_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (3,6,27000,8500,20220810)
+2022-08-10 21:18:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        monthly_summary 
+    WHERE
+        period_id >= 202208
+2022-08-10 21:18:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    SELECT
+        period_id,
+        buy_count,
+        customer_count,
+        total,
+        profit 
+    FROM
+        daily_summary 
+    WHERE
+        period_id between 20220801 AND 20220831
+2022-08-10 21:18:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        monthly_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (26,36,269000,50000,202208)
+2022-08-10 21:18:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    update
+        settings 
+    set
+        value=? 
+    where
+        code=?
+2022-08-10 21:18:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [2022-08-10 21:18:30]
+2022-08-10 21:18:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [2] as [VARCHAR] - [last_time_summary_job]
+2022-08-10 21:19:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        settings0_.id as id1_7_,
+        settings0_.code as code2_7_,
+        settings0_.name as name3_7_,
+        settings0_.value as value4_7_ 
+    from
+        settings settings0_ 
+    where
+        settings0_.code=?
+2022-08-10 21:19:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [last_time_summary_job]
+2022-08-10 21:19:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        distinct order0_.id as id1_5_0_,
+        orderdetai1_.id as id1_4_1_,
+        order0_.created_at as created_2_5_0_,
+        order0_.created_by as created_3_5_0_,
+        order0_.is_deleted as is_delet4_5_0_,
+        order0_.modified_at as modified5_5_0_,
+        order0_.modified_by as modified6_5_0_,
+        order0_.customer_id as custome10_5_0_,
+        order0_.is_paid as is_paid7_5_0_,
+        order0_.type as type8_5_0_,
+        order0_.total as total9_5_0_,
+        orderdetai1_.product_id as product_3_4_1_,
+        orderdetai1_.quantity as quantity2_4_1_,
+        orderdetai1_.order_id as order_id4_4_0__,
+        orderdetai1_.id as id1_4_0__ 
+    from
+        orders order0_ 
+    inner join
+        order_detail orderdetai1_ 
+            on order0_.id=orderdetai1_.order_id 
+    where
+        (
+            order0_.created_at between ? and ?
+        ) 
+        and order0_.type=?
+2022-08-10 21:19:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [TIMESTAMP] - [2022-08-10T21:00]
+2022-08-10 21:19:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [2] as [TIMESTAMP] - [2022-08-10T21:19]
+2022-08-10 21:19:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [3] as [VARCHAR] - [XUAT]
+2022-08-10 21:19:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        customer0_.id as id1_0_0_,
+        customer0_.address as address2_0_0_,
+        customer0_.name as name3_0_0_,
+        customer0_.phone as phone4_0_0_ 
+    from
+        customers customer0_ 
+    where
+        customer0_.id=?
+2022-08-10 21:19:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [2]
+2022-08-10 21:19:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:19:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [2]
+2022-08-10 21:19:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:19:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [3]
+2022-08-10 21:19:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:19:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [4]
+2022-08-10 21:19:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        hourly_summary 
+    WHERE
+        period_id >= 2022081021
+2022-08-10 21:19:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        hourly_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (1,3,12000,4500,2022081021)
+2022-08-10 21:19:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        daily_summary 
+    WHERE
+        period_id >= 20220810
+2022-08-10 21:19:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    SELECT
+        period_id,
+        buy_count,
+        customer_count,
+        total,
+        profit 
+    FROM
+        hourly_summary 
+    WHERE
+        period_id between 2022081000 AND 2022081024
+2022-08-10 21:19:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        daily_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (3,6,27000,8500,20220810)
+2022-08-10 21:19:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        monthly_summary 
+    WHERE
+        period_id >= 202208
+2022-08-10 21:19:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    SELECT
+        period_id,
+        buy_count,
+        customer_count,
+        total,
+        profit 
+    FROM
+        daily_summary 
+    WHERE
+        period_id between 20220801 AND 20220831
+2022-08-10 21:19:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        monthly_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (26,36,269000,50000,202208)
+2022-08-10 21:19:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    update
+        settings 
+    set
+        value=? 
+    where
+        code=?
+2022-08-10 21:19:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [2022-08-10 21:19:00]
+2022-08-10 21:19:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [2] as [VARCHAR] - [last_time_summary_job]
+2022-08-10 21:19:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        settings0_.id as id1_7_,
+        settings0_.code as code2_7_,
+        settings0_.name as name3_7_,
+        settings0_.value as value4_7_ 
+    from
+        settings settings0_ 
+    where
+        settings0_.code=?
+2022-08-10 21:19:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [last_time_summary_job]
+2022-08-10 21:19:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        distinct order0_.id as id1_5_0_,
+        orderdetai1_.id as id1_4_1_,
+        order0_.created_at as created_2_5_0_,
+        order0_.created_by as created_3_5_0_,
+        order0_.is_deleted as is_delet4_5_0_,
+        order0_.modified_at as modified5_5_0_,
+        order0_.modified_by as modified6_5_0_,
+        order0_.customer_id as custome10_5_0_,
+        order0_.is_paid as is_paid7_5_0_,
+        order0_.type as type8_5_0_,
+        order0_.total as total9_5_0_,
+        orderdetai1_.product_id as product_3_4_1_,
+        orderdetai1_.quantity as quantity2_4_1_,
+        orderdetai1_.order_id as order_id4_4_0__,
+        orderdetai1_.id as id1_4_0__ 
+    from
+        orders order0_ 
+    inner join
+        order_detail orderdetai1_ 
+            on order0_.id=orderdetai1_.order_id 
+    where
+        (
+            order0_.created_at between ? and ?
+        ) 
+        and order0_.type=?
+2022-08-10 21:19:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [TIMESTAMP] - [2022-08-10T21:00]
+2022-08-10 21:19:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [2] as [TIMESTAMP] - [2022-08-10T21:19:30]
+2022-08-10 21:19:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [3] as [VARCHAR] - [XUAT]
+2022-08-10 21:19:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        customer0_.id as id1_0_0_,
+        customer0_.address as address2_0_0_,
+        customer0_.name as name3_0_0_,
+        customer0_.phone as phone4_0_0_ 
+    from
+        customers customer0_ 
+    where
+        customer0_.id=?
+2022-08-10 21:19:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [2]
+2022-08-10 21:19:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:19:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [2]
+2022-08-10 21:19:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:19:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [3]
+2022-08-10 21:19:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:19:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [4]
+2022-08-10 21:19:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        hourly_summary 
+    WHERE
+        period_id >= 2022081021
+2022-08-10 21:19:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        hourly_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (1,3,12000,4500,2022081021)
+2022-08-10 21:19:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        daily_summary 
+    WHERE
+        period_id >= 20220810
+2022-08-10 21:19:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    SELECT
+        period_id,
+        buy_count,
+        customer_count,
+        total,
+        profit 
+    FROM
+        hourly_summary 
+    WHERE
+        period_id between 2022081000 AND 2022081024
+2022-08-10 21:19:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        daily_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (3,6,27000,8500,20220810)
+2022-08-10 21:19:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        monthly_summary 
+    WHERE
+        period_id >= 202208
+2022-08-10 21:19:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    SELECT
+        period_id,
+        buy_count,
+        customer_count,
+        total,
+        profit 
+    FROM
+        daily_summary 
+    WHERE
+        period_id between 20220801 AND 20220831
+2022-08-10 21:19:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        monthly_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (26,36,269000,50000,202208)
+2022-08-10 21:19:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    update
+        settings 
+    set
+        value=? 
+    where
+        code=?
+2022-08-10 21:19:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [2022-08-10 21:19:30]
+2022-08-10 21:19:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [2] as [VARCHAR] - [last_time_summary_job]
+2022-08-10 21:20:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        settings0_.id as id1_7_,
+        settings0_.code as code2_7_,
+        settings0_.name as name3_7_,
+        settings0_.value as value4_7_ 
+    from
+        settings settings0_ 
+    where
+        settings0_.code=?
+2022-08-10 21:20:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [last_time_summary_job]
+2022-08-10 21:20:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        distinct order0_.id as id1_5_0_,
+        orderdetai1_.id as id1_4_1_,
+        order0_.created_at as created_2_5_0_,
+        order0_.created_by as created_3_5_0_,
+        order0_.is_deleted as is_delet4_5_0_,
+        order0_.modified_at as modified5_5_0_,
+        order0_.modified_by as modified6_5_0_,
+        order0_.customer_id as custome10_5_0_,
+        order0_.is_paid as is_paid7_5_0_,
+        order0_.type as type8_5_0_,
+        order0_.total as total9_5_0_,
+        orderdetai1_.product_id as product_3_4_1_,
+        orderdetai1_.quantity as quantity2_4_1_,
+        orderdetai1_.order_id as order_id4_4_0__,
+        orderdetai1_.id as id1_4_0__ 
+    from
+        orders order0_ 
+    inner join
+        order_detail orderdetai1_ 
+            on order0_.id=orderdetai1_.order_id 
+    where
+        (
+            order0_.created_at between ? and ?
+        ) 
+        and order0_.type=?
+2022-08-10 21:20:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [TIMESTAMP] - [2022-08-10T21:00]
+2022-08-10 21:20:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [2] as [TIMESTAMP] - [2022-08-10T21:20]
+2022-08-10 21:20:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [3] as [VARCHAR] - [XUAT]
+2022-08-10 21:20:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        customer0_.id as id1_0_0_,
+        customer0_.address as address2_0_0_,
+        customer0_.name as name3_0_0_,
+        customer0_.phone as phone4_0_0_ 
+    from
+        customers customer0_ 
+    where
+        customer0_.id=?
+2022-08-10 21:20:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [2]
+2022-08-10 21:20:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:20:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [2]
+2022-08-10 21:20:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:20:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [3]
+2022-08-10 21:20:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:20:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [4]
+2022-08-10 21:20:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        hourly_summary 
+    WHERE
+        period_id >= 2022081021
+2022-08-10 21:20:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        hourly_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (1,3,12000,4500,2022081021)
+2022-08-10 21:20:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        daily_summary 
+    WHERE
+        period_id >= 20220810
+2022-08-10 21:20:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    SELECT
+        period_id,
+        buy_count,
+        customer_count,
+        total,
+        profit 
+    FROM
+        hourly_summary 
+    WHERE
+        period_id between 2022081000 AND 2022081024
+2022-08-10 21:20:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        daily_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (3,6,27000,8500,20220810)
+2022-08-10 21:20:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        monthly_summary 
+    WHERE
+        period_id >= 202208
+2022-08-10 21:20:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    SELECT
+        period_id,
+        buy_count,
+        customer_count,
+        total,
+        profit 
+    FROM
+        daily_summary 
+    WHERE
+        period_id between 20220801 AND 20220831
+2022-08-10 21:20:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        monthly_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (26,36,269000,50000,202208)
+2022-08-10 21:20:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    update
+        settings 
+    set
+        value=? 
+    where
+        code=?
+2022-08-10 21:20:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [2022-08-10 21:20:00]
+2022-08-10 21:20:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [2] as [VARCHAR] - [last_time_summary_job]
+2022-08-10 21:20:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        settings0_.id as id1_7_,
+        settings0_.code as code2_7_,
+        settings0_.name as name3_7_,
+        settings0_.value as value4_7_ 
+    from
+        settings settings0_ 
+    where
+        settings0_.code=?
+2022-08-10 21:20:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [last_time_summary_job]
+2022-08-10 21:20:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        distinct order0_.id as id1_5_0_,
+        orderdetai1_.id as id1_4_1_,
+        order0_.created_at as created_2_5_0_,
+        order0_.created_by as created_3_5_0_,
+        order0_.is_deleted as is_delet4_5_0_,
+        order0_.modified_at as modified5_5_0_,
+        order0_.modified_by as modified6_5_0_,
+        order0_.customer_id as custome10_5_0_,
+        order0_.is_paid as is_paid7_5_0_,
+        order0_.type as type8_5_0_,
+        order0_.total as total9_5_0_,
+        orderdetai1_.product_id as product_3_4_1_,
+        orderdetai1_.quantity as quantity2_4_1_,
+        orderdetai1_.order_id as order_id4_4_0__,
+        orderdetai1_.id as id1_4_0__ 
+    from
+        orders order0_ 
+    inner join
+        order_detail orderdetai1_ 
+            on order0_.id=orderdetai1_.order_id 
+    where
+        (
+            order0_.created_at between ? and ?
+        ) 
+        and order0_.type=?
+2022-08-10 21:20:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [TIMESTAMP] - [2022-08-10T21:00]
+2022-08-10 21:20:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [2] as [TIMESTAMP] - [2022-08-10T21:20:30]
+2022-08-10 21:20:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [3] as [VARCHAR] - [XUAT]
+2022-08-10 21:20:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        customer0_.id as id1_0_0_,
+        customer0_.address as address2_0_0_,
+        customer0_.name as name3_0_0_,
+        customer0_.phone as phone4_0_0_ 
+    from
+        customers customer0_ 
+    where
+        customer0_.id=?
+2022-08-10 21:20:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [2]
+2022-08-10 21:20:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:20:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [2]
+2022-08-10 21:20:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:20:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [3]
+2022-08-10 21:20:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:20:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [4]
+2022-08-10 21:20:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        hourly_summary 
+    WHERE
+        period_id >= 2022081021
+2022-08-10 21:20:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        hourly_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (1,3,12000,4500,2022081021)
+2022-08-10 21:20:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        daily_summary 
+    WHERE
+        period_id >= 20220810
+2022-08-10 21:20:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    SELECT
+        period_id,
+        buy_count,
+        customer_count,
+        total,
+        profit 
+    FROM
+        hourly_summary 
+    WHERE
+        period_id between 2022081000 AND 2022081024
+2022-08-10 21:20:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        daily_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (3,6,27000,8500,20220810)
+2022-08-10 21:20:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        monthly_summary 
+    WHERE
+        period_id >= 202208
+2022-08-10 21:20:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    SELECT
+        period_id,
+        buy_count,
+        customer_count,
+        total,
+        profit 
+    FROM
+        daily_summary 
+    WHERE
+        period_id between 20220801 AND 20220831
+2022-08-10 21:20:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        monthly_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (26,36,269000,50000,202208)
+2022-08-10 21:20:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    update
+        settings 
+    set
+        value=? 
+    where
+        code=?
+2022-08-10 21:20:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [2022-08-10 21:20:30]
+2022-08-10 21:20:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [2] as [VARCHAR] - [last_time_summary_job]
+2022-08-10 21:21:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        settings0_.id as id1_7_,
+        settings0_.code as code2_7_,
+        settings0_.name as name3_7_,
+        settings0_.value as value4_7_ 
+    from
+        settings settings0_ 
+    where
+        settings0_.code=?
+2022-08-10 21:21:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [last_time_summary_job]
+2022-08-10 21:21:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        distinct order0_.id as id1_5_0_,
+        orderdetai1_.id as id1_4_1_,
+        order0_.created_at as created_2_5_0_,
+        order0_.created_by as created_3_5_0_,
+        order0_.is_deleted as is_delet4_5_0_,
+        order0_.modified_at as modified5_5_0_,
+        order0_.modified_by as modified6_5_0_,
+        order0_.customer_id as custome10_5_0_,
+        order0_.is_paid as is_paid7_5_0_,
+        order0_.type as type8_5_0_,
+        order0_.total as total9_5_0_,
+        orderdetai1_.product_id as product_3_4_1_,
+        orderdetai1_.quantity as quantity2_4_1_,
+        orderdetai1_.order_id as order_id4_4_0__,
+        orderdetai1_.id as id1_4_0__ 
+    from
+        orders order0_ 
+    inner join
+        order_detail orderdetai1_ 
+            on order0_.id=orderdetai1_.order_id 
+    where
+        (
+            order0_.created_at between ? and ?
+        ) 
+        and order0_.type=?
+2022-08-10 21:21:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [TIMESTAMP] - [2022-08-10T21:00]
+2022-08-10 21:21:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [2] as [TIMESTAMP] - [2022-08-10T21:21]
+2022-08-10 21:21:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [3] as [VARCHAR] - [XUAT]
+2022-08-10 21:21:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        customer0_.id as id1_0_0_,
+        customer0_.address as address2_0_0_,
+        customer0_.name as name3_0_0_,
+        customer0_.phone as phone4_0_0_ 
+    from
+        customers customer0_ 
+    where
+        customer0_.id=?
+2022-08-10 21:21:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [2]
+2022-08-10 21:21:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:21:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [2]
+2022-08-10 21:21:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:21:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [3]
+2022-08-10 21:21:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:21:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [4]
+2022-08-10 21:21:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        hourly_summary 
+    WHERE
+        period_id >= 2022081021
+2022-08-10 21:21:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        hourly_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (1,3,12000,4500,2022081021)
+2022-08-10 21:21:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        daily_summary 
+    WHERE
+        period_id >= 20220810
+2022-08-10 21:21:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    SELECT
+        period_id,
+        buy_count,
+        customer_count,
+        total,
+        profit 
+    FROM
+        hourly_summary 
+    WHERE
+        period_id between 2022081000 AND 2022081024
+2022-08-10 21:21:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        daily_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (3,6,27000,8500,20220810)
+2022-08-10 21:21:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        monthly_summary 
+    WHERE
+        period_id >= 202208
+2022-08-10 21:21:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    SELECT
+        period_id,
+        buy_count,
+        customer_count,
+        total,
+        profit 
+    FROM
+        daily_summary 
+    WHERE
+        period_id between 20220801 AND 20220831
+2022-08-10 21:21:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        monthly_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (26,36,269000,50000,202208)
+2022-08-10 21:21:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    update
+        settings 
+    set
+        value=? 
+    where
+        code=?
+2022-08-10 21:21:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [2022-08-10 21:21:00]
+2022-08-10 21:21:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [2] as [VARCHAR] - [last_time_summary_job]
+2022-08-10 21:21:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        settings0_.id as id1_7_,
+        settings0_.code as code2_7_,
+        settings0_.name as name3_7_,
+        settings0_.value as value4_7_ 
+    from
+        settings settings0_ 
+    where
+        settings0_.code=?
+2022-08-10 21:21:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [last_time_summary_job]
+2022-08-10 21:21:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        distinct order0_.id as id1_5_0_,
+        orderdetai1_.id as id1_4_1_,
+        order0_.created_at as created_2_5_0_,
+        order0_.created_by as created_3_5_0_,
+        order0_.is_deleted as is_delet4_5_0_,
+        order0_.modified_at as modified5_5_0_,
+        order0_.modified_by as modified6_5_0_,
+        order0_.customer_id as custome10_5_0_,
+        order0_.is_paid as is_paid7_5_0_,
+        order0_.type as type8_5_0_,
+        order0_.total as total9_5_0_,
+        orderdetai1_.product_id as product_3_4_1_,
+        orderdetai1_.quantity as quantity2_4_1_,
+        orderdetai1_.order_id as order_id4_4_0__,
+        orderdetai1_.id as id1_4_0__ 
+    from
+        orders order0_ 
+    inner join
+        order_detail orderdetai1_ 
+            on order0_.id=orderdetai1_.order_id 
+    where
+        (
+            order0_.created_at between ? and ?
+        ) 
+        and order0_.type=?
+2022-08-10 21:21:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [TIMESTAMP] - [2022-08-10T21:00]
+2022-08-10 21:21:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [2] as [TIMESTAMP] - [2022-08-10T21:21:30]
+2022-08-10 21:21:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [3] as [VARCHAR] - [XUAT]
+2022-08-10 21:21:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        customer0_.id as id1_0_0_,
+        customer0_.address as address2_0_0_,
+        customer0_.name as name3_0_0_,
+        customer0_.phone as phone4_0_0_ 
+    from
+        customers customer0_ 
+    where
+        customer0_.id=?
+2022-08-10 21:21:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [2]
+2022-08-10 21:21:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:21:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [2]
+2022-08-10 21:21:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:21:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [3]
+2022-08-10 21:21:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:21:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [4]
+2022-08-10 21:21:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        hourly_summary 
+    WHERE
+        period_id >= 2022081021
+2022-08-10 21:21:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        hourly_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (1,3,12000,4500,2022081021)
+2022-08-10 21:21:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        daily_summary 
+    WHERE
+        period_id >= 20220810
+2022-08-10 21:21:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    SELECT
+        period_id,
+        buy_count,
+        customer_count,
+        total,
+        profit 
+    FROM
+        hourly_summary 
+    WHERE
+        period_id between 2022081000 AND 2022081024
+2022-08-10 21:21:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        daily_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (3,6,27000,8500,20220810)
+2022-08-10 21:21:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        monthly_summary 
+    WHERE
+        period_id >= 202208
+2022-08-10 21:21:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    SELECT
+        period_id,
+        buy_count,
+        customer_count,
+        total,
+        profit 
+    FROM
+        daily_summary 
+    WHERE
+        period_id between 20220801 AND 20220831
+2022-08-10 21:21:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        monthly_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (26,36,269000,50000,202208)
+2022-08-10 21:21:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    update
+        settings 
+    set
+        value=? 
+    where
+        code=?
+2022-08-10 21:21:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [2022-08-10 21:21:30]
+2022-08-10 21:21:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [2] as [VARCHAR] - [last_time_summary_job]
+2022-08-10 21:22:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        settings0_.id as id1_7_,
+        settings0_.code as code2_7_,
+        settings0_.name as name3_7_,
+        settings0_.value as value4_7_ 
+    from
+        settings settings0_ 
+    where
+        settings0_.code=?
+2022-08-10 21:22:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [last_time_summary_job]
+2022-08-10 21:22:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        distinct order0_.id as id1_5_0_,
+        orderdetai1_.id as id1_4_1_,
+        order0_.created_at as created_2_5_0_,
+        order0_.created_by as created_3_5_0_,
+        order0_.is_deleted as is_delet4_5_0_,
+        order0_.modified_at as modified5_5_0_,
+        order0_.modified_by as modified6_5_0_,
+        order0_.customer_id as custome10_5_0_,
+        order0_.is_paid as is_paid7_5_0_,
+        order0_.type as type8_5_0_,
+        order0_.total as total9_5_0_,
+        orderdetai1_.product_id as product_3_4_1_,
+        orderdetai1_.quantity as quantity2_4_1_,
+        orderdetai1_.order_id as order_id4_4_0__,
+        orderdetai1_.id as id1_4_0__ 
+    from
+        orders order0_ 
+    inner join
+        order_detail orderdetai1_ 
+            on order0_.id=orderdetai1_.order_id 
+    where
+        (
+            order0_.created_at between ? and ?
+        ) 
+        and order0_.type=?
+2022-08-10 21:22:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [TIMESTAMP] - [2022-08-10T21:00]
+2022-08-10 21:22:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [2] as [TIMESTAMP] - [2022-08-10T21:22]
+2022-08-10 21:22:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [3] as [VARCHAR] - [XUAT]
+2022-08-10 21:22:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        customer0_.id as id1_0_0_,
+        customer0_.address as address2_0_0_,
+        customer0_.name as name3_0_0_,
+        customer0_.phone as phone4_0_0_ 
+    from
+        customers customer0_ 
+    where
+        customer0_.id=?
+2022-08-10 21:22:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [2]
+2022-08-10 21:22:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:22:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [2]
+2022-08-10 21:22:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:22:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [3]
+2022-08-10 21:22:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:22:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [4]
+2022-08-10 21:22:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        hourly_summary 
+    WHERE
+        period_id >= 2022081021
+2022-08-10 21:22:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        hourly_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (1,3,12000,4500,2022081021)
+2022-08-10 21:22:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        daily_summary 
+    WHERE
+        period_id >= 20220810
+2022-08-10 21:22:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    SELECT
+        period_id,
+        buy_count,
+        customer_count,
+        total,
+        profit 
+    FROM
+        hourly_summary 
+    WHERE
+        period_id between 2022081000 AND 2022081024
+2022-08-10 21:22:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        daily_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (3,6,27000,8500,20220810)
+2022-08-10 21:22:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        monthly_summary 
+    WHERE
+        period_id >= 202208
+2022-08-10 21:22:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    SELECT
+        period_id,
+        buy_count,
+        customer_count,
+        total,
+        profit 
+    FROM
+        daily_summary 
+    WHERE
+        period_id between 20220801 AND 20220831
+2022-08-10 21:22:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        monthly_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (26,36,269000,50000,202208)
+2022-08-10 21:22:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    update
+        settings 
+    set
+        value=? 
+    where
+        code=?
+2022-08-10 21:22:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [2022-08-10 21:22:00]
+2022-08-10 21:22:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [2] as [VARCHAR] - [last_time_summary_job]
+2022-08-10 21:22:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        settings0_.id as id1_7_,
+        settings0_.code as code2_7_,
+        settings0_.name as name3_7_,
+        settings0_.value as value4_7_ 
+    from
+        settings settings0_ 
+    where
+        settings0_.code=?
+2022-08-10 21:22:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [last_time_summary_job]
+2022-08-10 21:22:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        distinct order0_.id as id1_5_0_,
+        orderdetai1_.id as id1_4_1_,
+        order0_.created_at as created_2_5_0_,
+        order0_.created_by as created_3_5_0_,
+        order0_.is_deleted as is_delet4_5_0_,
+        order0_.modified_at as modified5_5_0_,
+        order0_.modified_by as modified6_5_0_,
+        order0_.customer_id as custome10_5_0_,
+        order0_.is_paid as is_paid7_5_0_,
+        order0_.type as type8_5_0_,
+        order0_.total as total9_5_0_,
+        orderdetai1_.product_id as product_3_4_1_,
+        orderdetai1_.quantity as quantity2_4_1_,
+        orderdetai1_.order_id as order_id4_4_0__,
+        orderdetai1_.id as id1_4_0__ 
+    from
+        orders order0_ 
+    inner join
+        order_detail orderdetai1_ 
+            on order0_.id=orderdetai1_.order_id 
+    where
+        (
+            order0_.created_at between ? and ?
+        ) 
+        and order0_.type=?
+2022-08-10 21:22:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [TIMESTAMP] - [2022-08-10T21:00]
+2022-08-10 21:22:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [2] as [TIMESTAMP] - [2022-08-10T21:22:30]
+2022-08-10 21:22:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [3] as [VARCHAR] - [XUAT]
+2022-08-10 21:22:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        customer0_.id as id1_0_0_,
+        customer0_.address as address2_0_0_,
+        customer0_.name as name3_0_0_,
+        customer0_.phone as phone4_0_0_ 
+    from
+        customers customer0_ 
+    where
+        customer0_.id=?
+2022-08-10 21:22:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [2]
+2022-08-10 21:22:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:22:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [2]
+2022-08-10 21:22:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:22:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [3]
+2022-08-10 21:22:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:22:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [4]
+2022-08-10 21:22:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        hourly_summary 
+    WHERE
+        period_id >= 2022081021
+2022-08-10 21:22:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        hourly_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (1,3,12000,4500,2022081021)
+2022-08-10 21:22:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        daily_summary 
+    WHERE
+        period_id >= 20220810
+2022-08-10 21:22:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    SELECT
+        period_id,
+        buy_count,
+        customer_count,
+        total,
+        profit 
+    FROM
+        hourly_summary 
+    WHERE
+        period_id between 2022081000 AND 2022081024
+2022-08-10 21:22:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        daily_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (3,6,27000,8500,20220810)
+2022-08-10 21:22:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        monthly_summary 
+    WHERE
+        period_id >= 202208
+2022-08-10 21:22:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    SELECT
+        period_id,
+        buy_count,
+        customer_count,
+        total,
+        profit 
+    FROM
+        daily_summary 
+    WHERE
+        period_id between 20220801 AND 20220831
+2022-08-10 21:22:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        monthly_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (26,36,269000,50000,202208)
+2022-08-10 21:22:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    update
+        settings 
+    set
+        value=? 
+    where
+        code=?
+2022-08-10 21:22:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [2022-08-10 21:22:30]
+2022-08-10 21:22:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [2] as [VARCHAR] - [last_time_summary_job]
+2022-08-10 21:23:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        settings0_.id as id1_7_,
+        settings0_.code as code2_7_,
+        settings0_.name as name3_7_,
+        settings0_.value as value4_7_ 
+    from
+        settings settings0_ 
+    where
+        settings0_.code=?
+2022-08-10 21:23:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [last_time_summary_job]
+2022-08-10 21:23:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        distinct order0_.id as id1_5_0_,
+        orderdetai1_.id as id1_4_1_,
+        order0_.created_at as created_2_5_0_,
+        order0_.created_by as created_3_5_0_,
+        order0_.is_deleted as is_delet4_5_0_,
+        order0_.modified_at as modified5_5_0_,
+        order0_.modified_by as modified6_5_0_,
+        order0_.customer_id as custome10_5_0_,
+        order0_.is_paid as is_paid7_5_0_,
+        order0_.type as type8_5_0_,
+        order0_.total as total9_5_0_,
+        orderdetai1_.product_id as product_3_4_1_,
+        orderdetai1_.quantity as quantity2_4_1_,
+        orderdetai1_.order_id as order_id4_4_0__,
+        orderdetai1_.id as id1_4_0__ 
+    from
+        orders order0_ 
+    inner join
+        order_detail orderdetai1_ 
+            on order0_.id=orderdetai1_.order_id 
+    where
+        (
+            order0_.created_at between ? and ?
+        ) 
+        and order0_.type=?
+2022-08-10 21:23:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [TIMESTAMP] - [2022-08-10T21:00]
+2022-08-10 21:23:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [2] as [TIMESTAMP] - [2022-08-10T21:23]
+2022-08-10 21:23:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [3] as [VARCHAR] - [XUAT]
+2022-08-10 21:23:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        customer0_.id as id1_0_0_,
+        customer0_.address as address2_0_0_,
+        customer0_.name as name3_0_0_,
+        customer0_.phone as phone4_0_0_ 
+    from
+        customers customer0_ 
+    where
+        customer0_.id=?
+2022-08-10 21:23:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [2]
+2022-08-10 21:23:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:23:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [2]
+2022-08-10 21:23:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:23:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [3]
+2022-08-10 21:23:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:23:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [4]
+2022-08-10 21:23:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        hourly_summary 
+    WHERE
+        period_id >= 2022081021
+2022-08-10 21:23:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        hourly_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (1,3,12000,4500,2022081021)
+2022-08-10 21:23:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        daily_summary 
+    WHERE
+        period_id >= 20220810
+2022-08-10 21:23:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    SELECT
+        period_id,
+        buy_count,
+        customer_count,
+        total,
+        profit 
+    FROM
+        hourly_summary 
+    WHERE
+        period_id between 2022081000 AND 2022081024
+2022-08-10 21:23:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        daily_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (3,6,27000,8500,20220810)
+2022-08-10 21:23:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        monthly_summary 
+    WHERE
+        period_id >= 202208
+2022-08-10 21:23:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    SELECT
+        period_id,
+        buy_count,
+        customer_count,
+        total,
+        profit 
+    FROM
+        daily_summary 
+    WHERE
+        period_id between 20220801 AND 20220831
+2022-08-10 21:23:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        monthly_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (26,36,269000,50000,202208)
+2022-08-10 21:23:00 [scheduling-1] DEBUG org.hibernate.SQL - 
+    update
+        settings 
+    set
+        value=? 
+    where
+        code=?
+2022-08-10 21:23:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [2022-08-10 21:23:00]
+2022-08-10 21:23:00 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [2] as [VARCHAR] - [last_time_summary_job]
+2022-08-10 21:23:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        settings0_.id as id1_7_,
+        settings0_.code as code2_7_,
+        settings0_.name as name3_7_,
+        settings0_.value as value4_7_ 
+    from
+        settings settings0_ 
+    where
+        settings0_.code=?
+2022-08-10 21:23:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [last_time_summary_job]
+2022-08-10 21:23:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        distinct order0_.id as id1_5_0_,
+        orderdetai1_.id as id1_4_1_,
+        order0_.created_at as created_2_5_0_,
+        order0_.created_by as created_3_5_0_,
+        order0_.is_deleted as is_delet4_5_0_,
+        order0_.modified_at as modified5_5_0_,
+        order0_.modified_by as modified6_5_0_,
+        order0_.customer_id as custome10_5_0_,
+        order0_.is_paid as is_paid7_5_0_,
+        order0_.type as type8_5_0_,
+        order0_.total as total9_5_0_,
+        orderdetai1_.product_id as product_3_4_1_,
+        orderdetai1_.quantity as quantity2_4_1_,
+        orderdetai1_.order_id as order_id4_4_0__,
+        orderdetai1_.id as id1_4_0__ 
+    from
+        orders order0_ 
+    inner join
+        order_detail orderdetai1_ 
+            on order0_.id=orderdetai1_.order_id 
+    where
+        (
+            order0_.created_at between ? and ?
+        ) 
+        and order0_.type=?
+2022-08-10 21:23:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [TIMESTAMP] - [2022-08-10T21:00]
+2022-08-10 21:23:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [2] as [TIMESTAMP] - [2022-08-10T21:23:30]
+2022-08-10 21:23:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [3] as [VARCHAR] - [XUAT]
+2022-08-10 21:23:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        customer0_.id as id1_0_0_,
+        customer0_.address as address2_0_0_,
+        customer0_.name as name3_0_0_,
+        customer0_.phone as phone4_0_0_ 
+    from
+        customers customer0_ 
+    where
+        customer0_.id=?
+2022-08-10 21:23:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [2]
+2022-08-10 21:23:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:23:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [2]
+2022-08-10 21:23:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:23:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [3]
+2022-08-10 21:23:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    select
+        product0_.id as id1_6_0_,
+        product0_.base_price as base_pri2_6_0_,
+        product0_.code as code3_6_0_,
+        product0_.name as name4_6_0_,
+        product0_.price as price5_6_0_,
+        product0_.type as type6_6_0_ 
+    from
+        products product0_ 
+    where
+        product0_.id=?
+2022-08-10 21:23:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [BIGINT] - [4]
+2022-08-10 21:23:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        hourly_summary 
+    WHERE
+        period_id >= 2022081021
+2022-08-10 21:23:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        hourly_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (1,3,12000,4500,2022081021)
+2022-08-10 21:23:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        daily_summary 
+    WHERE
+        period_id >= 20220810
+2022-08-10 21:23:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    SELECT
+        period_id,
+        buy_count,
+        customer_count,
+        total,
+        profit 
+    FROM
+        hourly_summary 
+    WHERE
+        period_id between 2022081000 AND 2022081024
+2022-08-10 21:23:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        daily_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (3,6,27000,8500,20220810)
+2022-08-10 21:23:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    DELETE 
+    FROM
+        monthly_summary 
+    WHERE
+        period_id >= 202208
+2022-08-10 21:23:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    SELECT
+        period_id,
+        buy_count,
+        customer_count,
+        total,
+        profit 
+    FROM
+        daily_summary 
+    WHERE
+        period_id between 20220801 AND 20220831
+2022-08-10 21:23:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    INSERT 
+    INTO
+        monthly_summary
+        (customer_count,buy_count,total,profit,period_id)  
+    VALUES
+        (26,36,269000,50000,202208)
+2022-08-10 21:23:30 [scheduling-1] DEBUG org.hibernate.SQL - 
+    update
+        settings 
+    set
+        value=? 
+    where
+        code=?
+2022-08-10 21:23:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [2022-08-10 21:23:30]
+2022-08-10 21:23:30 [scheduling-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [2] as [VARCHAR] - [last_time_summary_job]
+2022-08-10 21:23:44 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-08-10 21:23:44 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2022-08-10 21:23:44 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

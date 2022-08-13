@@ -1,0 +1,116 @@
+use master;
+drop database teabreakorder;
+create database teabreakorder;
+use teabreakorder;
+create table stores
+(
+	id bigint not null
+		constraint stores_pk
+			primary key nonclustered,
+	name varchar(255),
+	url varchar(1000),
+	status smallint default 0,
+	created_by varchar(255),
+	modified_by varchar(255),
+	created_at datetime,
+	modified_at datetime
+)
+go
+
+create table categories
+(
+	id bigint not null
+		constraint categories_pk
+			primary key nonclustered,
+	name varchar(255) not null,
+	store_id bigint not null
+		references stores,
+	created_by varchar(255),
+	modified_by varchar(255),
+	created_at datetime,
+	modified_at datetime,
+	status smallint default 0
+)
+go
+
+create table orders
+(
+	id bigint not null
+		constraint order_pk
+			primary key nonclustered,
+	store_id bigint not null
+		references stores,
+	description varchar(1000),
+	created_by varchar(255),
+	created_at datetime,
+	modidied_by varchar(255),
+	modified_at datetime,
+	status tinyint default 0,
+	total bigint default 0
+)
+go
+
+create table products
+(
+	id bigint not null
+		constraint products_pk
+			primary key nonclustered,
+	name varchar(255) not null,
+	img text,
+	category_id bigint
+		references categories,
+	store_id bigint not null
+		references stores,
+	price bigint not null,
+	sale_price bigint,
+	created_ad datetime,
+	created_by varchar(255),
+	modified_at datetime,
+	modified_by varchar(255),
+	status tinyint default 0,
+	description varchar(1000)
+)
+go
+
+create table [user]
+(
+	id bigint not null
+		constraint user_pk
+			primary key nonclustered,
+	username varchar(255) not null,
+	password varchar(255) not null,
+	full_name varchar(255),
+	type varchar(50) default 'LOCAL',
+	status tinyint default '0',
+	role varchar(50) default 'USER',
+	created_by varchar(255),
+	modified_by varchar(255),
+	created_at datetime,
+	modified_at datetime
+)
+go
+
+create table order_details
+(
+	id bigint not null
+		constraint order_details_pk
+			primary key nonclustered,
+	user_id bigint not null
+		references [user],
+	order_id bigint not null
+		references orders,
+	description varchar(1000),
+	product_id bigint not null,
+	quantity tinyint not null,
+	created_by varchar(255),
+	created_at datetime,
+	modified_by varchar(255),
+	modified_at datetime,
+	status tinyint default 0
+)
+go
+
+create unique index user_username_uindex
+	on [user] (username)
+go
+
