@@ -10,6 +10,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -57,7 +58,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests().antMatchers("/auth/**").permitAll()	//cho phép tất cả mọi người truy cập đường dẫn này
-                .antMatchers("/ws/**","/test/**","/files/**").permitAll()
+                .antMatchers("/ws/**","/test/**","/files/**","/v2/api-docs/**", "/webjars/**", "/swagger-ui/**", "/swagger-ui.html", "/swagger-resources/**","/v3/api-docs/**").permitAll()
                 .antMatchers("/orders/**").permitAll()
                 .anyRequest().authenticated();	//tất cả các request khác phải xác thực mới được truy cập
         //.permit() cho phép	.authenticated() cấm hoặc yêu câu xác thực
@@ -65,5 +66,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 
-
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/swagger-ui/**", "/v3/api-docs/**");
+    }
 }

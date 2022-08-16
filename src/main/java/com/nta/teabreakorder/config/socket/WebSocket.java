@@ -12,7 +12,7 @@ import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
 
 @Slf4j
-@ServerEndpoint(value = "/ws/{token}" )
+@ServerEndpoint(value = "/ws/{token}")
 public class WebSocket {
 
     @Autowired
@@ -22,6 +22,7 @@ public class WebSocket {
     public void onOpen(@PathParam("token") String token, Session session) throws IOException {
         token = token.replaceAll("Bearer ", "");
         try {
+            session.setMaxIdleTimeout(300000);
             WsManager.addNewSession(session);
         } catch (Exception e) {
             e.printStackTrace();
@@ -32,7 +33,7 @@ public class WebSocket {
 
     @OnMessage
     public void onMessage(String txt, Session session) throws IOException {
-        session.getBasicRemote().sendText("HELLO2");
+        session.getBasicRemote().sendText(txt);
     }
 
     @OnClose

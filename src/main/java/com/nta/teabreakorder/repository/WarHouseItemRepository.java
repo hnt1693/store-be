@@ -18,4 +18,7 @@ public interface WarHouseItemRepository extends JpaRepository<WarHouseItem, Long
     void deletes(List<Long> ids);
 
     WarHouseItem getByProductAndQuantityGreaterThanEqual(Product product, int quantity);
+
+    List<WarHouseItem> getAllByQuantityIsLessThanEqual(int quantity);
+
 }
