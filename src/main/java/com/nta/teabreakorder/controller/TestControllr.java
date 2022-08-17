@@ -17,4 +17,10 @@ public class TestControllr {
     public String gen(@RequestParam("p") String p) {
         return passwordEncoder.encode(p);
     }
+
+
+    @GetMapping("/ping")
+    public String ping() {
+        return "OK";
+    }
 }

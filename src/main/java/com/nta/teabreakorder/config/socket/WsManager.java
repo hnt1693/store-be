@@ -15,13 +15,16 @@ public class WsManager {
     }
 
     public static void remoteSession(Session session) {
-      SESSION_POOL.remove(session.getId());
+        SESSION_POOL.remove(session.getId());
     }
 
     public static void putToAll(WsAction data) {
         SESSION_POOL.values().forEach(s -> {
             try {
-                s.getBasicRemote().sendText(data.toJson());
+                if (s.isOpen()) {
+                    s.getBasicRemote().sendText(data.toJson());
+                }
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
