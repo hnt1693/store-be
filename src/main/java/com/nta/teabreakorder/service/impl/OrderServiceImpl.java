@@ -139,13 +139,15 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public ResponseEntity deletes(List<Long> ids) throws Exception {
         List<Order> orderList = orderRepository.findAllById(ids);
-        for (Order order : orderList) {
-            rollbackQuantityWarHouseByOrder(order);
+        if(!orderList.isEmpty()){
+            for (Order order : orderList) {
+                rollbackQuantityWarHouseByOrder(order);
+            }
+            orderList.sort(Comparator.comparing(AuditingModel::getCreatedAt));
+            LocalDateTime earliest = orderList.get(0).getCreatedAt();
+            orderRepository.deleteAll(orderList);
+            setTimeSummaryJob(earliest);
         }
-        orderList.sort(Comparator.comparing(AuditingModel::getCreatedAt));
-        LocalDateTime earliest = orderList.get(0).getCreatedAt();
-        orderRepository.deleteAll(orderList);
-        setTimeSummaryJob(earliest);
         return CommonUtil.createResponseEntityOK(1);
     }
 
