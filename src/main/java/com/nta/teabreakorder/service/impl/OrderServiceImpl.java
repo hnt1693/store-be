@@ -157,11 +157,13 @@ public class OrderServiceImpl implements OrderService {
         for (OrderDetail orderDetail : order.getOrderDetailList()) {
             if (OrderType.XUAT.equals(order.getOrderType())) {
                 warHouseItem = warHouseItemRepository.getByProductAndQuantityGreaterThanEqual(orderDetail.getProduct(), -1);
-                warHouseItem.setQuantity(warHouseItem.getQuantity() + orderDetail.getQuantity());
-                warHouseItemList.add(warHouseItem);
+                if(warHouseItem!=null){
+                    warHouseItem.setQuantity(warHouseItem.getQuantity() + orderDetail.getQuantity());
+                    warHouseItemList.add(warHouseItem);
+                }
             } else {
                 warHouseItem = warHouseItemRepository.getByProductAndQuantityGreaterThanEqual(orderDetail.getProduct(), -1);
-                if (warHouseItem.getQuantity() < orderDetail.getQuantity()) {
+                if (warHouseItem!=null && warHouseItem.getQuantity() < orderDetail.getQuantity()) {
                     throw new ApiException(errorHelper.getValue("ORDER_ORDERDETAIL_D_QUANTITY"));
                 }
                 warHouseItem.setQuantity(warHouseItem.getQuantity() - orderDetail.getQuantity());
